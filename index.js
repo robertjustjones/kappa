@@ -202,8 +202,8 @@ module.exports = {
 
             var res = req.response,
                 path = res.headers && res.headers['x-registry'],
-                pkg = req.params.p.split('/')[0];
-            if (req.method === 'get' && path && path !== settings.paths[0]) {
+                pkg = req.params.p && req.params.p.split('/')[0];
+            if (pkg && req.method === 'get' && path && path !== settings.paths[0]) {
                 plugin.log(['info', 'redirect'], { "package": pkg, "path": path });
             }
         });
